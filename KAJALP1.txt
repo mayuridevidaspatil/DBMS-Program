@@ -1,0 +1,105 @@
+
+*************************************************************************
+NAME    :-MAYURI DEVIDAS PATIL
+ROLL NO.:-04[B]
+TITLE   :-Creating a sample database using any client server RDBMS package
+	Using SQL DDL queries.This will be include constraints(Primary 	key,foreign key,Unique key,Not Null and Check)to be used while 	creating the table.
+*************************************************************************
+
+mysql> create database university_db;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| University_db      |
+| mysql              |
+| performance_schema |
+| university_db      |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use university_db;
+Database changed
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+*************************APPLYING UNIQUE KEY, PRIMARY KEY AND NULL KEY CONSTRAINTS*******************************************************
+mysql> create table student(sr_no int UNIQUE KEY AUTO_INCREMENT,student_id int(5) PRIMARY KEY,name varchar(30) NOT NULL,address varchar(30),dob date)ENGINE=InnoDB;
+Query OK, 0 rows affected (0.06 sec)
+
+***********************************APPLYING PRIMARY KEY CONSTRAINTS***********************************************************************
+mysql> create table department(name varchar(30) PRIMARY KEY,building_no int(2))ENGINE=InnoDB;
+Query OK, 0 rows affected (0.01 sec)
+
+*************************APPLYING PRIMARY KEY,FOREIGN KEY AND NULL KEY CONSTRAINTS*******************************************************
+mysql> create table instructor(instructor_id int(5) PRIMARY KEY,name varchar(30) NOT NULL,dept_name varchar(30), FOREIGN KEY (dept_name) REFERENCES department(name),salary decimal(8,2))ENGINE=InnoDB;
+Query OK, 0 rows affected (0.00 sec)
+
+
+*************************APPLYING PRIMARY KEY,FOREIGN KEY CONSTRAINTS*******************************************************
+mysql> create table courses(course_id int(5) PRIMARY KEY,title varchar(30) ,dept_name varchar(30), FOREIGN KEY (dept_name) REFERENCES department(name))ENGINE=InnoDB;
+Query OK, 0 rows affected (1.68 sec)
+
+
+
+
+mysql> show tables;
++-------------------------+
+| Tables_in_university_db |
++-------------------------+
+| courses                 |
+| department              |
+| instructor              |
+| student                 |
++-------------------------+
+4 rows in set (0.00 sec)
+
+mysql> describe student;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| sr_no      | int(11)     | NO   | UNI | NULL    | auto_increment |
+| student_id | int(5)      | NO   | PRI | NULL    |                |
+| name       | varchar(30) | NO   |     | NULL    |                |
+| address    | varchar(30) | YES  |     | NULL    |                |
+| dob        | date        | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> describe department;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| name        | varchar(30) | NO   | PRI | NULL    |       |
+| building_no | int(2)      | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> describe instructor;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| instructor_id | int(5)       | NO   | PRI | NULL    |       |
+| name          | varchar(30)  | NO   |     | NULL    |       |
+| dept_name     | varchar(30)  | YES  | MUL | NULL    |       |
+| salary        | decimal(8,2) | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> describe courses;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| course_id | int(5)      | NO   | PRI | NULL    |       |
+| title     | varchar(30) | YES  |     | NULL    |       |
+| dept_name | varchar(30) | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+

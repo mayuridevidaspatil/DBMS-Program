@@ -1,0 +1,23 @@
+mysql> create database Student;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use Student;
+Database changed
+
+mysql> create table student(ID int(5),name varchar(34),address varchar(40));
+Query OK, 0 rows affected (0.08 sec)
+
+
+mysql> insert into student values(1,'Mayuri Patil','Jalgaon');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select *from student;
++------+--------------+---------+
+| ID   | name         | address |
++------+--------------+---------+
+|    1 | Mayuri Patil | Jalgaon |
++------+--------------+---------+
+1 row in set (0.00 sec)
+
+mysql> 
+

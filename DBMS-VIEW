@@ -1,0 +1,188 @@
+/*Practicle n0-07: To understand the concepts of view.
+Name: Mayuri Devidas Patil
+Div: B
+Roll No: 04 */
+
+
+mysql> use university1_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select *from v;
++---------------+-------------------+------------------------+----------+
+| instructor_id | name              | dept_name              | salary   |
++---------------+-------------------+------------------------+----------+
+|             1 | prof.Ashish Bhole | Computer Engineering   | 50000.00 |
+|             3 | prof.Shital Patil | Computer Engineering   | 40000.00 |
+|             6 | prof.Shekavat     | Mechanical Engineering | 60000.00 |
+|             7 | prof.A.K.Patil    | Electrical Engineering | 70000.00 |
++---------------+-------------------+------------------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> insert into v values(8,'prof.V>Kundlikar','Computer Engineering',45000.00);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into v values(9,'Prachi Despande','Computer Engineering',65000.00);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into v values(9,'Kirti Sindge','Computer Engineering',70000.00);
+ERROR 1062 (23000): Duplicate entry '9' for key 'PRIMARY'
+mysql> insert into v values(10,'Kirti Sindge','Computer Engineering',70000.00);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into v values(11,'Dipak Navrkar','Computer Engineering',400000.00);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select *from v;
++---------------+-------------------+------------------------+----------+
+| instructor_id | name              | dept_name              | salary   |
++---------------+-------------------+------------------------+----------+
+|             1 | prof.Ashish Bhole | Computer Engineering   | 50000.00 |
+|             3 | prof.Shital Patil | Computer Engineering   | 40000.00 |
+|             6 | prof.Shekavat     | Mechanical Engineering | 60000.00 |
+|             7 | prof.A.K.Patil    | Electrical Engineering | 70000.00 |
+|            11 | Dipak Navrkar     | Computer Engineering   | 33333.33 |
++---------------+-------------------+------------------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select *from v;
++---------------+-------------------+------------------------+----------+
+| instructor_id | name              | dept_name              | salary   |
++---------------+-------------------+------------------------+----------+
+|             1 | prof.Ashish Bhole | Computer Engineering   | 50000.00 |
+|             3 | prof.Shital Patil | Computer Engineering   | 40000.00 |
+|             6 | prof.Shekavat     | Mechanical Engineering | 60000.00 |
+|             7 | prof.A.K.Patil    | Electrical Engineering | 70000.00 |
+|            11 | Dipak Navrkar     | Computer Engineering   | 33333.33 |
++---------------+-------------------+------------------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> insert into v values(12,'M.D.Patil','Computer Engineering',800000.00);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into v values(13,'J.D.Patil','Computer Engineering',900000.00);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into v values(14,'S.D.Patil','Computer Engineering',950000.00);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select *from v;
++---------------+-------------------+------------------------+----------+
+| instructor_id | name              | dept_name              | salary   |
++---------------+-------------------+------------------------+----------+
+|             1 | prof.Ashish Bhole | Computer Engineering   | 50000.00 |
+|             3 | prof.Shital Patil | Computer Engineering   | 40000.00 |
+|             6 | prof.Shekavat     | Mechanical Engineering | 60000.00 |
+|             7 | prof.A.K.Patil    | Electrical Engineering | 70000.00 |
+|            11 | Dipak Navrkar     | Computer Engineering   | 33333.33 |
+|            12 | M.D.Patil         | Computer Engineering   | 66666.67 |
+|            13 | J.D.Patil         | Computer Engineering   | 75000.00 |
+|            14 | S.D.Patil         | Computer Engineering   | 79166.67 |
++---------------+-------------------+------------------------+----------+
+8 rows in set (0.00 sec)
+
+mysql> update v SET name='prof. Dipak Navrkar' where instructor_id=11;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from v;
++---------------+---------------------+------------------------+----------+
+| instructor_id | name                | dept_name              | salary   |
++---------------+---------------------+------------------------+----------+
+|             1 | prof.Ashish Bhole   | Computer Engineering   | 50000.00 |
+|             3 | prof.Shital Patil   | Computer Engineering   | 40000.00 |
+|             6 | prof.Shekavat       | Mechanical Engineering | 60000.00 |
+|             7 | prof.A.K.Patil      | Electrical Engineering | 70000.00 |
+|            11 | prof. Dipak Navrkar | Computer Engineering   | 33333.33 |
+|            12 | M.D.Patil           | Computer Engineering   | 66666.67 |
+|            13 | J.D.Patil           | Computer Engineering   | 75000.00 |
+|            14 | S.D.Patil           | Computer Engineering   | 79166.67 |
++---------------+---------------------+------------------------+----------+
+8 rows in set (0.00 sec)
+
+mysql> select *from instructor;
++---------------+-----------------------+------------------------+----------+
+| instructor_id | name                  | dept_name              | salary   |
++---------------+-----------------------+------------------------+----------+
+|             1 | prof.Ashish Bhole     | Computer Engineering   | 50000.00 |
+|             2 | Prof.Ashish Bhole     | Information Technology | 30000.00 |
+|             3 | prof.Shital Patil     | Computer Engineering   | 40000.00 |
+|             4 | prof.vinaya Savdekar  | Computer Engineering   | 20000.00 |
+|             5 | prof.Chetana Baviskar | Computer Engineering   | 10000.00 |
+|             6 | prof.Shekavat         | Mechanical Engineering | 60000.00 |
+|             7 | prof.A.K.Patil        | Electrical Engineering | 70000.00 |
+|             8 | prof.V>Kundlikar      | Computer Engineering   |  3750.00 |
+|             9 | Prachi Despande       | Computer Engineering   |  5416.67 |
+|            10 | Kirti Sindge          | Computer Engineering   |  5833.33 |
+|            11 | prof. Dipak Navrkar   | Computer Engineering   | 33333.33 |
+|            12 | M.D.Patil             | Computer Engineering   | 66666.67 |
+|            13 | J.D.Patil             | Computer Engineering   | 75000.00 |
+|            14 | S.D.Patil             | Computer Engineering   | 79166.67 |
+|          1000 | prof.Ashish Bhole     | Computer Engineering   |  6666.67 |
++---------------+-----------------------+------------------------+----------+
+15 rows in set (0.00 sec)
+
+mysql> update v SET name='prof. Prachi Despande' where instructor_id=9;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> update v SET name='prof. V.Kundlikar' where instructor_id=8;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> update v SET name='prof. Kirti Sindge' where instructor_id=10;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> update v SET name='prof. M.D.Patil' where instructor_id=12;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update v SET name='prof. J.D.Patil' where instructor_id=13;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update v SET name='prof. S.D.Patil' where instructor_id=14;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from v;
++---------------+---------------------+------------------------+----------+
+| instructor_id | name                | dept_name              | salary   |
++---------------+---------------------+------------------------+----------+
+|             1 | prof.Ashish Bhole   | Computer Engineering   | 50000.00 |
+|             3 | prof.Shital Patil   | Computer Engineering   | 40000.00 |
+|             6 | prof.Shekavat       | Mechanical Engineering | 60000.00 |
+|             7 | prof.A.K.Patil      | Electrical Engineering | 70000.00 |
+|            11 | prof. Dipak Navrkar | Computer Engineering   | 33333.33 |
+|            12 | prof. M.D.Patil     | Computer Engineering   | 66666.67 |
+|            13 | prof. J.D.Patil     | Computer Engineering   | 75000.00 |
+|            14 | prof. S.D.Patil     | Computer Engineering   | 79166.67 |
++---------------+---------------------+------------------------+----------+
+8 rows in set (0.00 sec)
+
+mysql> select *from instructor;
++---------------+-----------------------+------------------------+----------+
+| instructor_id | name                  | dept_name              | salary   |
++---------------+-----------------------+------------------------+----------+
+|             1 | prof.Ashish Bhole     | Computer Engineering   | 50000.00 |
+|             2 | Prof.Ashish Bhole     | Information Technology | 30000.00 |
+|             3 | prof.Shital Patil     | Computer Engineering   | 40000.00 |
+|             4 | prof.vinaya Savdekar  | Computer Engineering   | 20000.00 |
+|             5 | prof.Chetana Baviskar | Computer Engineering   | 10000.00 |
+|             6 | prof.Shekavat         | Mechanical Engineering | 60000.00 |
+|             7 | prof.A.K.Patil        | Electrical Engineering | 70000.00 |
+|             8 | prof.V>Kundlikar      | Computer Engineering   |  3750.00 |
+|             9 | Prachi Despande       | Computer Engineering   |  5416.67 |
+|            10 | Kirti Sindge          | Computer Engineering   |  5833.33 |
+|            11 | prof. Dipak Navrkar   | Computer Engineering   | 33333.33 |
+|            12 | prof. M.D.Patil       | Computer Engineering   | 66666.67 |
+|            13 | prof. J.D.Patil       | Computer Engineering   | 75000.00 |
+|            14 | prof. S.D.Patil       | Computer Engineering   | 79166.67 |
+|          1000 | prof.Ashish Bhole     | Computer Engineering   |  6666.67 |
++---------------+-----------------------+------------------------+----------+
+15 rows in set (0.00 sec)
+
+mysql> 
+

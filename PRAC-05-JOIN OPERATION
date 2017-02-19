@@ -1,0 +1,59 @@
+/*Practicle n0-05: Write a program to demonstrate different types of JOIN.
+ Name: Mayuri Devidas Patil
+Div: B
+Roll No: 04 */
+
+
+
+
+mysql> create table teacher(instructor_id int(6),course_id int(6),semister varchar(10),year int(4),foreign key (instructor_id)references instructor(instructor_id),foreign key(course_id)references course(course_id));
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> insert into teacher(instructor_id,course_id,semister,year)values(1,500,'sixth',2016);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into teacher(instructor_id,course_id,semister,year)values(3,800,'sixth',2016);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into teacher(instructor_id,course_id,semister,year)values(4,600,'sixth',2016);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select *from teacher;
++---------------+-----------+----------+------+
+| instructor_id | course_id | semister | year |
++---------------+-----------+----------+------+
+|             1 |       500 | sixth    | 2016 |
+|             3 |       800 | sixth    | 2016 |
+|             4 |       600 | sixth    | 2016 |
++---------------+-----------+----------+------+
+3 rows in set (0.00 sec)
+
+mysql> select i.instructor_id,name,dept_name,salary from instructor i;
++---------------+-----------------------+------------------------+----------+
+| instructor_id | name                  | dept_name              | salary   |
++---------------+-----------------------+------------------------+----------+
+|             1 | prof.Ashish Bhole     | Computer Engineering   | 50000.00 |
+|             2 | Prof.Ashish Bhole     | Information Technology | 30000.00 |
+|             3 | prof.Shital Patil     | Computer Engineering   | 40000.00 |
+|             4 | prof.vinaya Savdekar  | Computer Engineering   | 20000.00 |
+|             5 | prof.Chetana Baviskar | Computer Engineering   | 10000.00 |
+|             6 | prof.Shekavat         | Mechanical Engineering | 60000.00 |
+|             7 | prof.A.K.Patil        | Electrical Engineering | 70000.00 |
++---------------+-----------------------+------------------------+----------+
+7 rows in set (0.00 sec)
+
+mysql> select i.instructor_id,name,dept_name,salary from instructor i join teacher t on i.instructor_id=t.instructor_id;
++---------------+----------------------+----------------------+----------+
+| instructor_id | name                 | dept_name            | salary   |
++---------------+----------------------+----------------------+----------+
+|             1 | prof.Ashish Bhole    | Computer Engineering | 50000.00 |
+|             3 | prof.Shital Patil    | Computer Engineering | 40000.00 |
+|             4 | prof.vinaya Savdekar | Computer Engineering | 20000.00 |
++---------------+----------------------+----------------------+----------+
+3 rows in set (0.00 sec)
+
+
+mysql> select i.instructor_id,name,dept_name,salary from instructor i left join teacher t on i.instructor_id=t.instructor_id where t.instructor_id=NULL;
+Empty set (0.00 sec)
+
+

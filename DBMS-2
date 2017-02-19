@@ -1,0 +1,324 @@
+
+mysql> use university1_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++--------------------------+
+| Tables_in_university1_db |
++--------------------------+
+| course                   |
+| dept                     |
+| instructor               |
+| stud                     |
++--------------------------+
+4 rows in set (0.00 sec)
+
+mysql> desc course;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| course_id | int(5)      | NO   | PRI | NULL    |       |
+| title     | varchar(30) | YES  |     | NULL    |       |
+| dept_name | varchar(30) | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc dept;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| name        | varchar(30) | NO   | PRI | NULL    |       |
+| building_no | int(30)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc stud;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| sr_no   | int(11)     | NO   | UNI | NULL    | auto_increment |
+| id      | int(5)      | NO   | PRI | NULL    |                |
+| name    | varchar(30) | NO   |     | NULL    |                |
+| address | varchar(40) | YES  |     | NULL    |                |
+| dob     | date        | YES  |     | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> desc instructor;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| instructor_id | int(5)       | NO   | PRI | NULL    |       |
+| name          | varchar(30)  | NO   |     | NULL    |       |
+| dept_name     | varchar(30)  | YES  | MUL | NULL    |       |
+| salary        | decimal(8,2) | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+
+mysql> insert into stud(sr_no,id,name,address,dob)values(1,101,'Mayuri Patil','ganesh colony bahadarpur','1996-04-03');
+ERROR 1062 (23000): Duplicate entry '1' for key 'sr_no'
+mysql> insert into stud(sr_no,id,name,address,dob)values(11,101,'Mayuri Patil','ganesh colony bahadarpur','1996-04-03');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into stud(sr_no,id,name,address,dob)values(12,102,'Prajkta Patil','gurudatta nagar jalgaon','1995-08-02');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into stud(sr_no,id,name,address,dob)values(13,103,'Poonam Patil','laxmi nagar jalgaon','1995-10-07');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into stud(sr_no,id,name,address,dob)values(14,104,'Bhagyashri Patil','gurudatta nagar jalgaon','1995-09-05');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select *from stud;
++-------+-----+------------------+--------------------------+------------+
+| sr_no | id  | name             | address                  | dob        |
++-------+-----+------------------+--------------------------+------------+
+|    11 | 101 | Mayuri Patil     | ganesh colony bahadarpur | 1996-04-03 |
+|    12 | 102 | Prajkta Patil    | gurudatta nagar jalgaon  | 1995-08-02 |
+|    13 | 103 | Poonam Patil     | laxmi nagar jalgaon      | 1995-10-07 |
+|    14 | 104 | Bhagyashri Patil | gurudatta nagar jalgaon  | 1995-09-05 |
++-------+-----+------------------+--------------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update stud  SET dob='1995-08-02' where sr_no=12;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from stud;
++-------+-----+------------------+-------------------------+------------+
+| sr_no | id  | name             | address                 | dob        |
++-------+-----+------------------+-------------------------+------------+
+|    11 | 101 | Mayuri Patil     | ganesh colony Jalgaon   | 1996-04-03 |
+|    12 | 102 | Prajkta Patil    | gurudatta nagar jalgaon | 1995-08-02 |
+|    13 | 103 | Poonam Patil     | laxmi nagar jalgaon     | 1995-10-07 |
+|    14 | 104 | Bhagyashri Patil | gurudatta nagar jalgaon | 1995-09-05 |
++-------+-----+------------------+-------------------------+------------+
+4 rows in set (0.00 sec)
+
+
+
+
+
+mysql> insert into dept(name,building_no)values(1,'Computer Engineering');
+Query OK, 1 row affected, 1 warning (0.04 sec)
+
+mysql> insert into dept(name,building_no)values(2,'Electronis and Telecommunication');
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+mysql> insert into dept(name,building_no)values(3,'Information Technology');
+Query OK, 1 row affected, 1 warning (0.04 sec)
+
+mysql> insert into dept(name,building_no)values(4,'Electrical Engineering');
+Query OK, 1 row affected, 1 warning (0.04 sec)
+
+mysql> insert into dept(name,building_no)values(5,'Mechanical Engineering');
+Query OK, 1 row affected, 1 warning (0.05 sec)
+
+mysql> insert into dept(name,building_no)values(6,'chemical Engineering');
+Query OK, 1 row affected, 1 warning (0.04 sec)
+
+mysql> insert into dept(name,building_no)values(7,'Biotech Engineering');
+Query OK, 1 row affected, 1 warning (0.04 sec)
+
+mysql> insert into dept(name,building_no)values(8,'MBA');
+Query OK, 1 row affected, 1 warning (0.04 sec)
+
+mysql> select *from dept;
++--------------------------------+-------------+
+| name                           | building_no |
++--------------------------------+-------------+
+| Biotech Engineering            |           6 |
+| Chemical Engineering           |           7 |
+| Computer Engineering           |           1 |
+| Electrical Engineering         |           4 |
+| Electronics and Telecommunicat |           3 |
+| Information Technology         |           2 |
+| Mechanical Engineering         |           5 |
++--------------------------------+-------------+
+
+
+
+mysql> insert into course(course_id,title,dept_name)values(600,'OOMD','Computer Engineering');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into course(course_id,title,dept_name)values(700,'MIS','Computer Engineering');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into course(course_id,title,dept_name)values(800,'ADA','Computer Engineering');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into course(course_id,title,dept_name)values(900,'OS','Computer Engineering');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select *from course;
++-----------+-------+----------------------+
+| course_id | title | dept_name            |
++-----------+-------+----------------------+
+|       500 | DBMS  | Computer Engineering |
+|       600 | OOMD  | Computer Engineering |
+|       700 | MIS   | Computer Engineering |
+|       800 | ADA   | Computer Engineering |
+|       900 | OS    | Computer Engineering |
++-----------+-------+----------------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into instructor(instructor_id,name,dept_name,salary)values(1,'prof.Ashish Bhole','Computer Engineering',40000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into instructor(instructor_id,name,dept_name,salary)values(2,'prof.Sushant Bahekar','Computer Engineering',40000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into instructor(instructor_id,name,dept_name,salary)values(3,'prof.Shital Patil','Computer Engineering',40000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into instructor(instructor_id,name,dept_name,salary)values(4,'prof.vinaya Savdekar','Computer Engineering',40000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into instructor(instructor_id,name,dept_name,salary)values(5,'prof.Chetana Baviskar','Computer Engineering',40000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select *from instructor;
++---------------+-----------------------+----------------------+----------+
+| instructor_id | name                  | dept_name            | salary   |
++---------------+-----------------------+----------------------+----------+
+|             1 | prof.Ashish Bhole     | Computer Engineering | 40000.00 |
+|             2 | prof.Sushant Bahekar  | Computer Engineering | 40000.00 |
+|             3 | prof.Shital Patil     | Computer Engineering | 40000.00 |
+|             4 | prof.vinaya Savdekar  | Computer Engineering | 40000.00 |
+|             5 | prof.Chetana Baviskar | Computer Engineering | 40000.00 |
++---------------+-----------------------+----------------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select *from course;
++-----------+-------+----------------------+
+| course_id | title | dept_name            |
++-----------+-------+----------------------+
+|       500 | DBMS  | Computer Engineering |
+|       600 | OOMD  | Computer Engineering |
+|       700 | MIS   | Computer Engineering |
+|       800 | ADA   | Computer Engineering |
+|       900 | OS    | Computer Engineering |
++-----------+-------+----------------------+
+5 rows in set (0.00 sec)
+
+mysql> select *from stud;
++-------+-----+------------------+--------------------------+------------+
+| sr_no | id  | name             | address                  | dob        |
++-------+-----+------------------+--------------------------+------------+
+|    11 | 101 | Mayuri Patil     | ganesh colony bahadarpur | 1996-04-03 |
+|    12 | 102 | Prajkta Patil    | gurudatta nagar jalgaon  | 1995-08-02 |
+|    13 | 103 | Poonam Patil     | laxmi nagar jalgaon      | 1995-10-07 |
+|    14 | 104 | Bhagyashri Patil | gurudatta nagar jalgaon  | 1995-09-05 |
++-------+-----+------------------+--------------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select *from dept;
++--------------------------------+-------------+
+| name                           | building_no |
++--------------------------------+-------------+
+| Biotech Engineering            |           6 |
+| Chemical Engineering           |           7 |
+| Computer Engineering           |           1 |
+| Electrical Engineering         |           4 |
+| Electronics and Telecommunicat |           3 |
+| Information Technology         |           2 |
+| Mechanical Engineering         |           5 |
++--------------------------------+-------------+
+7 rows in set (0.00 sec)
+
+
+mysql> update stud SET address='Jalgaon' where sr_no=1;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select *from stud;
++-------+-----+------------------+--------------------------+------------+
+| sr_no | id  | name             | address                  | dob        |
++-------+-----+------------------+--------------------------+------------+
+|    11 | 101 | Mayuri Patil     | ganesh colony bahadarpur | 1996-04-03 |
+|    12 | 102 | Prajkta Patil    | gurudatta nagar jalgaon  | 1995-08-02 |
+|    13 | 103 | Poonam Patil     | laxmi nagar jalgaon      | 1995-10-07 |
+|    14 | 104 | Bhagyashri Patil | gurudatta nagar jalgaon  | 1995-09-05 |
++-------+-----+------------------+--------------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update stud SET address='Jalgaon' where sr_no=11;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from stud;
++-------+-----+------------------+-------------------------+------------+
+| sr_no | id  | name             | address                 | dob        |
++-------+-----+------------------+-------------------------+------------+
+|    11 | 101 | Mayuri Patil     | Jalgaon                 | 1996-04-03 |
+|    12 | 102 | Prajkta Patil    | gurudatta nagar jalgaon | 1995-08-02 |
+|    13 | 103 | Poonam Patil     | laxmi nagar jalgaon     | 1995-10-07 |
+|    14 | 104 | Bhagyashri Patil | gurudatta nagar jalgaon | 1995-09-05 |
++-------+-----+------------------+-------------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update stud SET address='ganesh colony Jalgaon' where sr_no=11;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from stud;
++-------+-----+------------------+-------------------------+------------+
+| sr_no | id  | name             | address                 | dob        |
++-------+-----+------------------+-------------------------+------------+
+|    11 | 101 | Mayuri Patil     | ganesh colony Jalgaon   | 1996-04-03 |
+|    12 | 102 | Prajkta Patil    | gurudatta nagar jalgaon | 1995-08-02 |
+|    13 | 103 | Poonam Patil     | laxmi nagar jalgaon     | 1995-10-07 |
+|    14 | 104 | Bhagyashri Patil | gurudatta nagar jalgaon | 1995-09-05 |
++-------+-----+------------------+-------------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update stud SET dob='1996-10-02' where sr_no=12;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from stud;
++-------+-----+------------------+-------------------------+------------+
+| sr_no | id  | name             | address                 | dob        |
++-------+-----+------------------+-------------------------+------------+
+|    11 | 101 | Mayuri Patil     | ganesh colony Jalgaon   | 1996-04-03 |
+|    12 | 102 | Prajkta Patil    | gurudatta nagar jalgaon | 1996-10-02 |
+|    13 | 103 | Poonam Patil     | laxmi nagar jalgaon     | 1995-10-07 |
+|    14 | 104 | Bhagyashri Patil | gurudatta nagar jalgaon | 1995-09-05 |
++-------+-----+------------------+-------------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> delete from dept where name='Biotech Engineering';
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select *from dept;
++--------------------------------+-------------+
+| name                           | building_no |
++--------------------------------+-------------+
+| Chemical Engineering           |           7 |
+| Computer Engineering           |           1 |
+| Electrical Engineering         |           4 |
+| Electronics and Telecommunicat |           3 |
+| Information Technology         |           2 |
+| Mechanical Engineering         |           5 |
++--------------------------------+-------------+
+6 rows in set (0.00)
+
+
+mysql> select *from instructor where salary between 20000.00 and 50000.00;
++---------------+----------------------+----------------------+----------+
+| instructor_id | name                 | dept_name            | salary   |
++---------------+----------------------+----------------------+----------+
+|             1 | prof.Ashish Bhole    | Computer Engineering | 50000.00 |
+|             2 | prof.Sushant Bahekar | Computer Engineering | 30000.00 |
+|             3 | prof.Shital Patil    | Computer Engineering | 40000.00 |
+|             4 | prof.vinaya Savdekar | Computer Engineering | 20000.00 |
++---------------+----------------------+----------------------+----------+
+4 rows in set (0.00)
+
+mysql> alter table stud add constraint UNIQUE KEY(DOB);
+Query OK, 0 rows affected (0.18 sec)
+

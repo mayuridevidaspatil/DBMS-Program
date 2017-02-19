@@ -1,0 +1,108 @@
+student@student-HCL-Desktop:~$ export CLASSPATH=$CLASSPATH:mysql-connector-java-5.1.38-bin.jar
+student@student-HCL-Desktop:~$ javac SQLDemo1.java
+student@student-HCL-Desktop:~$ java SQLDemo1
+
+1.Select	2.Insert
+3.Delete	4.Update
+5.Exit
+Enter Choice 
+1
+1	Mayuri Patil		Jalgaon
+
+1.Select	2.Insert
+3.Delete	4.Update
+5.Exit
+Enter Choice 
+2
+Enter ID
+2
+Enter name
+Jayshri Patil
+Enter address
+Bhusaval
+
+1.Select	2.Insert
+3.Delete	4.Update
+5.Exit
+Enter Choice 
+2
+Enter ID
+3           
+Enter name
+Poonam Patil
+Enter address
+Jalgaon
+
+1.Select	2.Insert
+3.Delete	4.Update
+5.Exit
+Enter Choice 
+2
+Enter ID
+4
+Enter name
+Bhagyashri Suryawanshi
+Enter address
+Jalgaon
+
+1.Select	2.Insert
+3.Delete	4.Update
+5.Exit
+Enter Choice 
+1
+1	Mayuri Patil		Jalgaon
+2	Jayshri Patil		Bhusaval
+3	Poonam Patil		Jalgaon
+4	Bhagyashri Suryawanshi		Jalgaon
+
+1.Select	2.Insert
+3.Delete	4.Update
+5.Exit
+Enter Choice 
+3
+Enter ID whose record you want to delete
+4
+
+1.Select	2.Insert
+3.Delete	4.Update
+5.Exit
+Enter Choice 
+1
+1	Mayuri Patil		Jalgaon
+2	Jayshri Patil		Bhusaval
+3	Poonam Patil		Jalgaon
+
+1.Select	2.Insert
+3.Delete	4.Update
+5.Exit
+
+Enter Choice 
+4
+
+What you want to Update(name or address )
+name  
+
+Enter the ID whose name is to be modified 
+3
+
+Enter modified Name
+Poonam 
+
+1.Select	2.Insert
+3.Delete	4.Update
+5.Exit
+Enter Choice 
+1
+1	Mayuri Patil		Jalgaon
+2	Jayshri Patil		Bhusaval
+3	Poonam 		Jalgaon
+
+1.Select	2.Insert
+3.Delete	4.Update
+5.Exit
+Enter Choice
+5
+student@student-HCL-Desktop:~$ 
+ 
+
+

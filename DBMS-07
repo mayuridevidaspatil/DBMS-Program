@@ -1,0 +1,27 @@
+Practicle n0-07:Write a program to demonstrate stored procedure.
+Name: Mayuri Devidas Patil
+Div: B
+Roll No: 04 
+
+mysql> delimiter $$
+mysql> create procedure comcount(out count int)
+    -> begin
+    -> select count(*) into count from instructor where dept_name='Computer Engineering';
+    -> end
+    -> $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter ;
+mysql> call comcount(@counting);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select @counting;
++-----------+
+| @counting |
++-----------+
+|         4 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> 
+
